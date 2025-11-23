@@ -1,0 +1,124 @@
+<div class="container">
+
+  <!-- NÚT CHUYỂN VIEW -->
+  <div class="view-toggle">
+    <button class="toggle-btn active" data-view="charts">Biểu đồ</button>
+    <button class="toggle-btn" data-view="history">Lịch sử</button>
+  </div>
+
+  <!-- 3 Ô GIÁ TRỊ HIỆN TẠI -->
+  <section class="grid-cards">
+
+    <div class="card metric">
+      <h3>Nhiệt độ</h3>
+      <!-- ID chuẩn cho dashboard.js -->
+      <span id="tempVal" class="value">--</span> <span>°C</span>
+    </div>
+
+    <div class="card metric">
+      <h3>Độ bụi</h3>
+      <span id="dustVal" class="value">--</span> <span>µg/m³</span>
+    </div>
+
+    <div class="card metric">
+      <h3>Áp suất</h3>
+      <span id="pressVal" class="value">--</span> <span>hPa</span>
+    </div>
+
+  </section>
+
+  <!-- ========== PHẦN BIỂU ĐỒ ========== -->
+  <div id="chartsSection">
+    <section class="grid-charts">
+      <div class="card"><canvas id="tempChart"></canvas></div>
+      <div class="card"><canvas id="dustChart"></canvas></div>
+      <div class="card"><canvas id="pressChart"></canvas></div>
+    </section>
+  </div>
+
+  <!-- ========== PHẦN LỊCH SỬ ========== -->
+  <div id="historySection" class="hidden">
+    <div class="history-card">
+      <h2 class="history-title">Lịch sử đo 100 lần gần nhất</h2>
+
+      <!-- BỘ LỌC -->
+      <div class="filters">
+
+        <div class="filter-row time-row">
+          <label for="fromTime">Từ ngày giờ:</label>
+          <input type="datetime-local" id="fromTime">
+
+          <label for="toTime">Đến ngày giờ:</label>
+          <input type="datetime-local" id="toTime">
+        </div>
+
+        <div class="filter-row">
+          <label for="minTemp">Ngưỡng nhiệt độ ≥</label>
+          <input type="number" id="minTemp" step="0.1" placeholder="VD: 30">
+        </div>
+
+        <div class="filter-row">
+          <label for="minDust">Ngưỡng độ bụi ≥</label>
+          <input type="number" id="minDust" step="0.1" placeholder="VD: 10">
+        </div>
+
+        <div class="filter-row">
+          <label for="minPress">Ngưỡng áp suất ≥</label>
+          <input type="number" id="minPress" step="0.1" placeholder="VD: 1000">
+        </div>
+
+        <div class="filter-buttons">
+          <button id="applyFilterBtn" class="btn-apply">Lọc</button>
+          <button id="resetFilterBtn" class="btn-reset">Reset</button>
+        </div>
+      </div>
+
+      <!-- BẢNG LỊCH SỬ -->
+      <div class="history-table-wrapper">
+        <table class="history-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nhiệt độ (°C)</th>
+              <th>Độ bụi (µg/m³)</th>
+              <th>Áp suất (hPa)</th>
+              <th>Thời gian</th>
+            </tr>
+          </thead>
+          <tbody id="historyBody"></tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- JS -->
+<script src="/js/dashboard.js"></script>
+<script src="/js/history.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  const buttons = document.querySelectorAll('.toggle-btn');
+  const chartsSection = document.getElementById('chartsSection');
+  const historySection = document.getElementById('historySection');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      if (btn.dataset.view === 'charts') {
+        chartsSection.classList.remove('hidden');
+        historySection.classList.add('hidden');
+      } else {
+        chartsSection.classList.add('hidden');
+        historySection.classList.remove('hidden');
+      }
+    });
+  });
+});
+</script>

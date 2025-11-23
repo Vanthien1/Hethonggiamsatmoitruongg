@@ -1,0 +1,23 @@
+{
+  "name": "web_iot",
+  "version": "1.0.0",
+  "description": "IoT dashboard demo (Express + EJS + SQL Server) with login-only auth and full-page background.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.9",
+    "express": "^4.19.2",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.17.3",
+    "msnodesqlv8": "^5.1.1",
+    "mssql": "^10.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

@@ -1,0 +1,17 @@
+<header class="nav">
+  <div class="nav-left">
+    <span class="logo-text">Smart home</span>
+  </div>
+
+  <div class="nav-center">
+    <% if (user) { %>
+      Kính chào, <%= user.fullname || user.username %>
+    <% } %>
+  </div>
+
+  <div class="nav-right">
+    <% if (user) { %>
+      <a href="/logout">Đăng xuất</a>
+    <% } %>
+  </div>
+</header>
