@@ -1,6 +1,4 @@
-// public/js/history.js
 // Load lịch sử 100 lần đo, hiển thị + lọc
-
 let allRows = [];
 
 // Format số cho bảng
@@ -23,8 +21,6 @@ function formatTime(raw) {
     hour12: false
   });
 }
-
-
 
 // Render bảng lịch sử
 function renderHistoryTable(rows) {

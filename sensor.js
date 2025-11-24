@@ -1,4 +1,3 @@
-// sensor_sim.js
 const { conn, sql } = require('./connect');
 
 function randomAround(base, delta) {
@@ -13,13 +12,13 @@ async function insertFakeReading() {
     const dust = randomAround(15, 5);
     const press = randomAround(1010, 8);
 
-    const now = new Date(); // 👉 giờ đúng trên máy tính
+    const now = new Date(); //  giờ đúng trên máy tính
 
     await pool.request()
       .input('t',  sql.Float, temp)
       .input('d',  sql.Float, dust)
       .input('p',  sql.Float, press)
-      .input('at', sql.DateTime2, now)   // 👉 GỬI THẲNG now VÀO CỘT At
+      .input('at', sql.DateTime2, now)   //  GỬI THẲNG now VÀO CỘT At
       .query(`
         INSERT INTO SensorStats (Temperature, Dust, Pressure, At)
         VALUES (@t, @d, @p, @at);

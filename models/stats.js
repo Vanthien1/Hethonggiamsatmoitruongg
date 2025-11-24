@@ -1,4 +1,3 @@
-// models/stats.js
 const { conn, sql } = require('../connect');
 
 // Lấy bản ghi mới nhất

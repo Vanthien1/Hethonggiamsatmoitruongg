@@ -1,8 +1,4 @@
-// public/js/dashboard.js
-
-// =============================
 // 1. HELPER
-// =============================
 
 async function fetchJson(url) {
   const res = await fetch(url, { cache: 'no-store' });
@@ -17,10 +13,7 @@ function formatNumber(v) {
   return n.toFixed(1);
 }
 
-// =============================
 // 2. UPDATE CURRENT VALUES
-// =============================
-
 function updateCurrentValues(latest) {
   console.log('updateCurrentValues latest =', latest);
 
@@ -39,6 +32,7 @@ function updateCurrentValues(latest) {
     const el = document.getElementById(id);
     if (el) el.textContent = tempText;
   });
+  
 
   dustIds.forEach(id => {
     const el = document.getElementById(id);
@@ -51,18 +45,12 @@ function updateCurrentValues(latest) {
   });
 }
 
-
-// =============================
 // 3. BIẾN LƯU INSTANCE CỦA CHART
-// =============================
-
 let tempChartInstance = null;
 let dustChartInstance = null;
 let pressChartInstance = null;
 
-// =============================
 // 4. VẼ BIỂU ĐỒ
-// =============================
 // Format label HH:mm theo giờ VN
 function formatTimeLabel(raw) {
   if (!raw) return '';
@@ -169,9 +157,7 @@ function buildCharts(series) {
   });
 }
 
-// =============================
 // 5. KHỞI ĐỘNG DASHBOARD
-// =============================
 
 async function initDashboard() {
   try {
