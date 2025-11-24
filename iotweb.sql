@@ -42,15 +42,13 @@ IF OBJECT_ID('dbo.Users', 'U') IS NOT NULL
 GO
 
 
-/* 4. TẠO BẢNG USERS*/
-CREATE TABLE dbo.Users (
-  Id       INT IDENTITY(1,1) PRIMARY KEY,
-  Username VARCHAR(50)  NOT NULL UNIQUE,
-  Email    VARCHAR(200) NOT NULL UNIQUE,
-  Password VARCHAR(200) NOT NULL,
-  FullName NVARCHAR(100),
-  Role     VARCHAR(20)  NOT NULL DEFAULT 'customer'
-);
+-- SEED 4 TÀI KHOẢN 
+INSERT dbo.Users (Username, Email, Password, FullName, Role)
+VALUES
+  ('vanthien',  'vanthien36636@gmail.com', 'vanthien',  N'Khách hàng 0', 'customer'),
+  ('minhthuat', 'buiminhthua@gmail.com',   '1minhthua', N'Khách hàng 1', 'customer'),
+  ('vannam',    'nguyenvannam@gmail.com',  'vannam',    N'Khách hàng 2', 'customer'),
+  ('huuhung',   'caohuuhung@gmail.com',    'huuhung',   N'Khách hàng 3', 'customer');
 GO
 
 -- SEED 4 TÀI KHOẢN 
